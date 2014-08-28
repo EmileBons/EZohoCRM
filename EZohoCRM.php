@@ -369,7 +369,7 @@ class EZohoCRM {
         $lastModifiedTime = null, $excludeNull = false, $version = self::VERSION,
         $print = false) {
         
-        return $this->getRecords($module, $columns, $fromIndex, $toIndex, 
+        return $this->getRecords($this->module, $columns, $fromIndex, $toIndex, 
             $sortColumnString, $sortOrderString, $lastModifiedTime, $excludeNull,
             $version, $print, true);
         
@@ -694,9 +694,7 @@ class EZohoCRM {
         
         $response = $this->zohoCrmApiCall($path, EHttpClient::GET, $getParameters);
         
-        if($print) $this->print_response($response);
-        
-        else return json_decode($response);
+        return json_decode($response);
         
     }
     
